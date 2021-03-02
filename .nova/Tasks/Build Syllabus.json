@@ -1,0 +1,9 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/bash\n\ncd \"\/Users\/mjanssen\/Documents\/Faculty Work\/teaching\/Dordt Classes\/Stat 201-202\/Stat 201 - Spring 2021\"\npandoc index.txt -s --mathml --css .\/pandoc.css -o index.html"
+    }
+  },
+  "identifier" : "F28DF2BB-732D-44C5-AFD2-F02F11B4A37E"
+}

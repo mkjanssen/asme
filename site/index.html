@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Applied Statistical Models/Econometrics</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./pandoc.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Applied Statistical Models/Econometrics</h1>
+</header>
+<h1 id="syllabus">Syllabus</h1>
+<h2 id="course-information">Course Information</h2>
+<ul>
+<li><strong>Institution</strong>: Dordt University</li>
+<li><strong>Course</strong>: Stat 201-01 (2 cr.) / Stat 202-01 (3 cr.)</li>
+<li><strong>Term</strong>: Spring 2021</li>
+<li><strong>Instructor</strong>: Dr. Mike Janssen, Associate Professor of Mathematics</li>
+<li><strong>Classroom</strong>: CL 92</li>
+<li><strong>Class time</strong>: 11:00am-12:15pm TTh (Stat 202: 12:30-1:20pm)</li>
+<li><strong>Office</strong>: SB 1612</li>
+<li><strong>Student Hours</strong>: <a href="https://calendly.com/mkjanssen/student-hours">Make an appointment</a> or drop by</li>
+<li><strong>Course notes</strong>: <a href="https://prof.mkjanssen.org/asme/notes/">https://prof.mkjanssen.org/asme/notes/</a> | <a href="https://github.com/mkjanssen/asme">PreTeXt source</a></li>
+<li><strong>Course website</strong>: <a href="https://prof.mkjanssen.org/asme/">https://prof.mkjanssen.org/asme/</a></li>
+<li><strong>Textbook website</strong>: <a href="http://isi-stats.com/isi2/">http://isi-stats.com/isi2/</a>; here you’ll find applets, datasets, and other resources</li>
+<li><strong>Stat 201 Catalog course description:</strong> This course surveys multivariable design and statistical methods used across various disciplines and seen in peer-reviewed research. Topics include multiple and non-linear regression, general linear models, multivariable statistical models, and multifactor experimental design. Emphasis is on active learning using group activities and projects, critiquing research, and statistical software. Offered second half of spring semester. Credit will not be given for Statistics 201 and 202. Prerequisite: Statistics 131 or 132.</li>
+<li><strong>Stat 202 Catalog course description:</strong> This course covers all of the topics in Statistics 201 and topics commonly used in economic applications of statistics: time series and forecasting, linear time series models, moving average, autoregressive and ARIMA models, data analysis and forecasting with time series models and forecasting errors. Meets at the same times as Statistics 201 plus two additional hours per week. This course, along with Statistics 132 and Statistics 203, also serves as preparation for Actuarial Exam SRM. Additionally this course, along with Statistics 132, Statistics 203, Statistics 220 and Statistics 352, serves as preparation for Actuarial Exam MAS I. Offered second half of spring semester. Credit will not be given for both Statistics 201 and 202. Prerequisite: Statistics 131 or 132.</li>
+</ul>
+<h3 id="required-resources">Required Resources</h3>
+<ul>
+<li><em>Intermediate Statistical Investigations</em>, 1st ed, Wiley (2021), by Tintle et al.</li>
+<li>Access code to WileyPLUS for electronic homework and other resources</li>
+<li>Computer or other access to run the statistical software, <a href="https://www.r-project.org">R</a> and the <a href="https://rstudio.com">RStudio</a> editor.
+<ul>
+<li><strong>If you are able, please bring your laptop to class each day to access both the <a href="http://www.isi-stats.com/isi2/applets.html">applets and datasets</a> and the R resources provided by the text and the instructor.</strong></li>
+</ul></li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Be able to understand and apply multivariable statistical models for observational data and randomized experiments.</li>
+<li>Be able to design, analyze, and communicate results from multivariable statistical studies.</li>
+</ul>
+<h3 id="fair-warnings">Fair Warnings</h3>
+<h4 id="pace">Pace</h4>
+<p><strong>This is a fast-paced class</strong>. Stat 201 is two credits, but over half the semester, which means it will feel like four. This should equate to approximately 12 hours of work per week, including time spent in class (2.5 hours). So you should anticipate putting in at least 9.5 hours/week on things like class prep, homework, studying, projects, etc. If you’re taking Stat 202/Econ 232, this will only add to the workload.</p>
+<p><strong>In short: we expect a lot from you outside of class</strong>.</p>
+<h4 id="software">Software</h4>
+<p>As indicated in the course description, part of the purpose of this course is to familiarize yourself with the statistical software, R. As when learning any new language, this may be frustrating at times. I will do my best to provide resources and examples, but <strong>it will be up to you to troubleshoot your code if it is not working</strong>. I <em>may</em> take a look at it when asked, but I may also refer you to a representative example instead.</p>
+<h2 id="course-liturgies">Course Liturgies</h2>
+<h3 id="before-class">Before Class</h3>
+<p>Each section of the text contains an example and exploration. Before coming to class each day, you should read and take notes on the sections we plan to cover that day (see the <a href="#stat201-schedule">schedule</a> below). You are not expected to understand them perfectly, but you should at least be able give a sense of what the big themes of the day are.</p>
+<h3 id="during-class">During Class</h3>
+<p>The majority of class time will be spent working on the explorations from each section. We’ll begin with a preview of the explorations, and will take any questions over the day’s readings at that time. <strong>Please bring a laptop with R installed on it</strong>; you’ll use both R and the text’s web applets to conduct the statistical analyses required for the explorations. At the end of the week, you’ll submit one of the explorations as a complete Rmarkdown file for evaluation.</p>
+<h3 id="after-class">After Class</h3>
+<p>To solidify the learning gains made in class, you’ll complete some work regarding a given section after we’re done discussing it in class. Specifically, you’ll have weekly homework completed on WileyPLUS and accessed through Canvas. Homework will consist of 7-10 problems and be due on Tuesdays at 11:59pm covering the previous week.</p>
+<h2 id="assessment">Assessment</h2>
+<p>Grades will be computed using the total number of points earned in the following categories. I reserve the right to modify grading policies, but I will give you plenty of advance notice if that is necessary. Extra credit will not be offered.</p>
+<h3 id="attendance-and-weekly-exploration">Attendance and Weekly Exploration</h3>
+<p>Active participation in class activities is crucial to success in this course. Answer questions and ask questions. Questions are a sign of learning. If you must miss a class you must email the professor prior to the start of the class period. You must send an email and receive confirmation in order for the absence to be considered “excused”. It is your responsibility to make up work missed due to absence. You can earn 10 points for attendance and active participation in each non-exam class period (13 class periods times 10 points, for 130 points).</p>
+<p>By Tuesday of the following week, you’ll submit an Rmarkdown (Rmd) version of one of the explorations from the previous week (10 points per Rmarkdown exploration times 7 weeks of content is 70 points). You’ll be told by the end of the day on Thursday which exploration will be due and which questions from the exploration need to be answered. You’ll be evaluated largely (6 points) on whether your code produces the correct analysis, as well as the conclusions you draw from it (4 points).</p>
+<h3 id="project-1">Project 1</h3>
+<p>You will find a data set that is related to a topic that you find interesting. On that data set, you will perform analysis that involves at least two explanatory variables and interactions. You will then present those results to the rest of the class and write up a final report, as if for a client.</p>
+<h3 id="project-2-stat-202econ-232-only">Project 2 (Stat 202/Econ 232 Only)</h3>
+<p>You will find a data set that consists of a variable that changes over time. On that data set, you will perform the analysis that we will explore in class and then present your results, both descriptive and predictive, to the class.</p>
+<h3 id="exams">Exams</h3>
+<p>There will be one midterm and a final exam.</p>
+<h3 id="homework">Homework</h3>
+<h4 id="stat-201">Stat 201</h4>
+<p>Homework is very important for practice and to ensure you are truly grasping course concepts. Homework will be assigned weekly and completed on WileyPLUS. You’ll have unlimited attempts on each problem.</p>
+<h4 id="stat-202">Stat 202</h4>
+<p>There are no WileyPLUS resources for Stat 202, so regularly weekly homework will be assigned on an ad-hoc basis.</p>
+<h2 id="final-grades">Final Grades</h2>
+<p>Your overall percentage <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math> will be calculated according to the following weights.</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Activity</strong></th>
+<th><strong>Weight</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Attendance and Rmd Explorations</td>
+<td>25%</td>
+</tr>
+<tr class="even">
+<td>Midterm</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>Project(s)</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td>Christian Perspective Assignment</td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td>Homework</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td>Final Exam</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table>
+<p>Your percentage <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math> will converted to a letter grade as follows.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Grade</th>
+<th style="text-align: center;">Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>92</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>≤</mo><mn>100</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">92\% \le G \le 100\%</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>A-</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>92</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">90\% \le G &lt; 92\%</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>B+</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>87</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>90</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">87\% \le G &lt; 90\%</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>83</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>87</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">83\% \le G &lt; 87\%</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>B-</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>83</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">80\% \le G &lt; 83\%</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>C+</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>77</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>80</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">77\% \le G &lt; 80\%</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>73</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>77</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">73\% \le G &lt; 77\%</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>C-</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>70</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>73</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">70\% \le G &lt; 73\%</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>D+</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>67</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>70</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">67\% \le G &lt; 70\%</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>63</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>67</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">63\% \le G &lt; 67\%</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>D-</td>
+<td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>%</mi><mo>≤</mo><mi>G</mi><mo>&lt;</mo><mn>63</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">60\% \le G &lt; 63\%</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-information">Additional Information</h3>
+<h4 id="dordt-university-students-right-to-accommodations-policy">Dordt University Student’s Right to Accommodations Policy</h4>
+<p>Any student who needs access to accommodations based on the impact of a documented disability should contact the Coordinator of Services for Students with Disabilities (CSSD): Marliss Van Der Zwaag, Academic Enrichment Center, (712) 722-6490, marliss.vanderzwaag@dordt.edu.</p>
+<h4 id="dordt-university-academic-dishonesty-policy">Dordt University Academic Dishonesty Policy</h4>
+<p>Dordt University is committed to developing a community of Christian scholars where all members accept the responsibility of practicing personal and academic integrity in obedience to biblical teaching. For students, this means not lying, cheating, or stealing others’ work to gain academic advantage; it also means opposing academic dishonesty. Students found to be academically dishonest will receive academic sanctions from their professor (from a failing grade on the particular academic task to a failing grade in the course) and will be reported to the Student Life Committee for possible institutional sanctions (from a warning to dismissal from the university). Appeals in such matters will be handled by the student disciplinary process. For more information, see the <a href="http://www.dordt.edu/campus_life/student_handbook/general_information.shtml#academic_integrity">Student Handbook</a>.</p>
+<h4 id="covid-19-classroom-protocols">COVID-19 Classroom Protocols</h4>
+<p>As we begin the Spring 2021 semester, Dordt is a mask-required environment. While on Dordt’s campus, you will need to wear a mask in all public places or common indoor spaces, which include: classrooms, hallways, laboratories, restrooms, the Hulst Library and all building lobbies.</p>
+<p>Should you forget your mask, there may be a disposable paper mask available in the classroom/lab for your use. If not, your instructor will ask you to return to your room to retrieve your mask. Physical distancing practices will also be in effect. Your instructor may also ask for student volunteers who are willing to take a few minutes to spray cleaning solution on classroom surfaces when class concludes. Should you not wear your mask appropriately in class, your instructor will remind you to mask appropriately. Students who do not mask appropriately may be asked to not attend class (and will be counted absent). Multiple absences of this nature may result in an Academic Alert and may impact your grade in the course.</p>
+<p>If you are approved by Student Services for accommodations for virtual learning due to COVID-19, your instructor will be notified via the COVID-19 Dashboard, and you will receive information from your instructor about virtual learning during your isolation/quarantine period. Please be patient as there may be some delay between you being notified of quarantine/isolation, placed on the COVID dashboard, and contacted by your instructor about your status. Students not approved (or not awaiting approval) for virtual learning should follow normal class attendance policies.</p>
+<p>Major assessments must be completed in-person on the scheduled date unless prior approval for online/remote (or delay) has been approved by Student Services due to isolation, quarantine, or other approved medical reasons.</p>
+<h2 id="tentative-schedule"><a id="stat201-schedule"></a>Tentative Schedule</h2>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Daily Plan</strong></th>
+<th><strong>Work Due</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-11.html">Th March 11</a>: Course intro, Section P.B</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-16.html">T March 16</a>: Section 1.1-1.2</td>
+<td>Homework 1, Rmd 1</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-18.html">Th March 18</a>: Sections 1.3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-23.html">T March 23</a>: Section 1.4, 1.6</td>
+<td>Homework 2, Rmd 2</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-25.html">Th March 25</a>: Section 2.1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Mar-30.html">T March 30</a>: Section 2.2-2.3</td>
+<td>Homework 3, Rmd 3</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-01.html">Th April 1</a>: <strong>Midterm</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-06.html">T April 6</a>: Sections 3.1-3.2, <strong>Project Proposals</strong> due</td>
+<td>Homework 4, Rmd 4</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-08.html">Th April 8</a>: Section 3.3-3.4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-13.html">T April 13</a>: Section 4.1-4.2</td>
+<td>Homework 5, Rmd 5</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-15.html">Th April 15</a>: Section 4.3-4.4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-20.html">T April 20</a>: Section 5.1-5.2</td>
+<td>Homework 6, Rmd 6</td>
+</tr>
+<tr class="even">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-22.html">Th April 22</a>: Chapter 6</td>
+<td>Christian Perspective assignment, Project Report</td>
+</tr>
+<tr class="odd">
+<td><a href="https://prof.mkjanssen.org/asme/notes/Apr-27.html">T April 27</a>: <strong>Project Presentations</strong></td>
+<td>Homework 7, Rmd 7</td>
+</tr>
+<tr class="even">
+<td>Th April 29: <strong>No Class</strong> (Assessment Day)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Final Exam (date/time TBD)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

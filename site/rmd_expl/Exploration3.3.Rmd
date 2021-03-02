@@ -1,0 +1,104 @@
+---
+title: "Exploration 3.3"
+output: word_document
+---
+  
+```{r}
+#install.packages("lattice")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+```
+
+**Load the hurricanesA dataset, e.g.,**
+```{r}
+hurricanesA= read.delim("http://www.isi-stats.com/isi2/data/hurricanesA.txt", stringsAsFactors=T)
+head(hurricanesA)
+```
+
+**9) Interaction plot**
+```{r}
+with(hurricanesA, interaction.plot(HurrGender, Participant, Rating))
+```
+
+**Describe the nature of the interaction shown in this graph. Do you think it will be statistically significant?**
+
+
+**10) ANOVA table**
+```{r}
+with(hurricanesA, summary(aov(Rating ~ HurrGender*Participant)))
+```
+**11) Is the interaction statistically significant?**
+
+
+**Load the hurricanesB dataset, e.g.,**
+```{r}
+hurricanesB= read.delim("http://www.isi-stats.com/isi2/data/hurricanesB.txt", stringsAsFactors=T)
+head(hurricanesB)
+#ParticipantID is numeric, change to a factor
+hurricanesB$ParticipantID = as.factor(hurricanesB$ParticipantID)
+```
+
+```{r}
+library(lattice)
+with(hurricanesB, histogram(~Rating | HurricaneGender))
+with(hurricanesB, histogram(~Rating | HurricaneAge))
+with(hurricanesB, interaction.plot(HurricaneGender, HurricaneAge, Rating))
+
+```
+
+**14) Based on your numerical and graphical summaries, is there much evidence of a gender effect? Is there an age effect? An interaction? Describe the nature of the interaction that is present.**
+
+
+
+```{r}
+with(hurricanesB, summary(aov(Rating ~HurricaneGender*HurricaneAge + as.factor(ParticipantID))))
+
+```
+
+**15)How much variation in ratings of hurricanes is explained by this model?**
+
+**16) Reproduce the ANOVA table. For each of the degrees of freedom provided, explain where it comes from/why it is what it is.**
+
+
+**17) Examine the residual plots for this model. Do you consider the validity conditions for the theory-based $F$-tests to be met? Include supporting evidence for your conclusions.**
+
+```{r}
+# model0=lm(hurricanesB$Rating ~hurricanesB$HurricaneGender*hurricanesB$HurricaneAge + as.factor(hurricanesB$ParticipantID))
+#plot(model0, resid(lm(hurricanesB$Rating ~hurricanesB$HurricaneGender*hurricanesB$HurricaneAge + as.factor(hurricanesB$ParticipantID))))
+plot(lm(hurricanesB$Rating ~hurricanesB$HurricaneGender*hurricanesB$HurricaneAge + as.factor(hurricanesB$ParticipantID)))
+```
+
+```{r}
+hist(residuals(lm(hurricanesB$Rating ~hurricanesB$HurricaneGender*hurricanesB$HurricaneAge + as.factor(hurricanesB$ParticipantID))), xlab="Residuals", ylab="Frequency", xlim=c(-4,4), breaks=40)
+```
+
+**18) State the null and alternative hypotheses for the interaction. What do you conclude? Is this consistent with your interaction plot?**
+
+The null hypothesis is that there is no interaction between gender and age of a hurricane name. The alternative is that there is. We fail to reject the null due to an $F$-statistic of 1.96 and a $p$-value of 0.162.
+
+**Because the interaction is not statistically significant, we will summarize the main effects.Rerun the analysis without including the interaction.**
+
+```{r}
+with(hurricanesB, summary(aov(Rating ~HurricaneGender +HurricaneAge + as.factor(ParticipantID))))
+```
+**19) State the null and alternative hypotheses for the hurricane gender effect. What do you conclude?**
+
+
+```{r}
+model1=lm(Rating ~HurricaneGender +HurricaneAge + as.factor(ParticipantID), data=hurricanesB)
+#default in R is indicator coding
+lower = confint(model1)[[2]]
+upper=confint(model1)[[350]]
+lower
+upper
+```
+A 95% confidence interval for male - female: (`r lower`, `r upper`)
+
+
+21. Yes, after adjusting for participant, there is strong evidence that male hurricanes are perceived as more dangerous. (This study found that this causes problems because people don’t take as many precautionary steps for hurricanes with female names because they aren’t perceived to be as much of a threat.) Because random assignment was employed in the rating order of the hurricanes it can be inferred that the gender of the hurricane name did cause the difference in rating. The population mean rating of male named hurricanes is believed to be 0.0612 to 0.2697 points higher than that of female named hurricanes at the level of 95% confidence.
+
+22. Yes, blocking on participant accounted for much of the person to person variation in rating the danger of each hurricane. Accounting for these person-to-person differences in how they rate hurricane danger, we were better able to compare the effect of the type of hurricane name on the adjusted ratings.

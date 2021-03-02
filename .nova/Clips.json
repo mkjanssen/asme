@@ -1,0 +1,9 @@
+{
+  "clips" : [
+    {
+      "content" : "<introduction>\n  \n  \n  \n  \n  <assemblage>\n\t<title>Today's Plan<\/title>\n\t<p>\n\t<statement>\n\tToday in class, we will:\n\t<ol>\n\t  <li><\/li>\n\t  <li><\/li>\n\t  <li><\/li>\n\t  <li><\/li>\n\t  \n\t<\/ol>\n\t\n\t<\/statement>\n\t<\/p>\n\t\n  <\/assemblage>\n  \n  \n  <\/introduction>\n  \n  <subsection>\n  \t<title>Today's Notes<\/title>\n\t  \n\t\n\t\n\t<assemblage>\n\t<title>Summary<\/title>\n\t<p>\n\t<statement>\n\t\t\n\t<\/statement>\n\t<\/p>\n\t\n  <\/assemblage>\n    \n  <\/subsection>\n  \n  <subsection>\n\t<title>Today's screencast<\/title>\n\t\n\t<insight>\n\t  \n\t<\/insight>\n\t\n  <\/subsection>\n  \n  <subsection>\n\t<title>If you missed class today<\/title>\n  \n  \n  \n\t<ol>\n\t<li>Watch the screencast above.<\/li>\n\t<li>Complete the prep and all in-class activities.<\/li>\n\t<li>Complete any assigned homework.<\/li>\n\t<\/ol>\n\t\n  <\/subsection>\n  \n  \n  ",
+      "name" : "Daily Plan",
+      "trigger" : "asmdailyp"
+    }
+  ]
+}

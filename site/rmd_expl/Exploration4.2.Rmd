@@ -1,0 +1,59 @@
+---
+title: "Exploration 4.2"
+author: "Mike Janssen"
+date: "2/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Load the Fatty Acid Dataset
+```{r}
+fattyAcid = read.delim("http://www.isi-stats.com/isi2/data/fattyAcid.txt")
+head(fattyAcid)
+```
+
+### Produce Fatty Acid Histogram
+```{r}
+###Produce histogram
+hist(fattyAcid$FattyAcidRatio)
+#or
+#install.packages("lattice")
+library("lattice")
+histogram(fattyAcid$FattyAcidRatio)
+```
+
+## 1. Calculuate R^2 via regression table
+```{r}
+fattyAcidLM=lm(fattyAcid$FattyAcidRatio ~ fattyAcid$Copies)
+summary(fattyAcidLM)
+```
+
+## Observed slope
+
+```{r}
+b=coef(fattyAcidLM)
+b
+class(b)
+b*3
+obsSlope=b[2]
+```
+
+
+## ANOVA table
+
+```{r}
+#ANOVA table for linear model
+#install.packages("car")
+with(fattyAcid, car::Anova(fattyAcidLM))
+```
+
+
+### 95% Confidence Interval
+
+```{r}
+fattyAcidCI=confint.lm(fattyAcidLM)
+fattyAcidCI
+```

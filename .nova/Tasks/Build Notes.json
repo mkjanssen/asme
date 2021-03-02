@@ -1,0 +1,10 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/bash\n\ncd ~\/Documents\/Faculty\\ Work\/teaching\/Dordt\\ Classes\/Stat\\ 201-202\/Stat\\ 201\\ -\\ Spring\\ 2021\/notes\n# xsltproc -stringparam publisher pub.xml ~\/Documents\/GitHub\/mathbook\/xsl\/pretext-html.xsl ~\/Documents\/Faculty\\ Work\/teaching\/Dordt\\ Classes\/Explorations\\ in\\ Modern\\ Mathematics\/Math\\ 149\\ -\\ Spring\\ 2021\/EMM.ptx\n#xsltproc -xinclude -stringparam html.css.colorfile colors_pastel_blue_orange.css ~\/Documents\/GitHub\/mathbook\/xsl\/pretext-html.xsl ~\/Documents\/Faculty\\ Work\/teaching\/Dordt\\ Classes\/Explorations\\ in\\ Modern\\ Mathematics\/Math\\ 149\\ -\\ Spring\\ 2021\/EMM.ptx\nxsltproc -xinclude -stringparam html.css.colorfile colors_pastel_blue_orange.css ~\/Documents\/GitHub\/mathbook\/user\/coursenotes-html.xsl ~\/Documents\/Faculty\\ Work\/teaching\/Dordt\\ Classes\/Stat\\ 201-202\/Stat\\ 201\\ -\\ Spring\\ 2021\/ptx\/asm.ptx"
+    }
+  },
+  "identifier" : "C2C8B1F0-2893-4B54-B214-D1A22D07D99B",
+  "openLogOnRun" : "finish"
+}

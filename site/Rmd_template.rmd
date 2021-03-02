@@ -1,0 +1,46 @@
+---
+title: "Rmd Template"
+author: "Mike Janssen"
+date: "2/23/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+In this assignment, you'll replicate one of the analyses from the week's explorations in R. You will **not** answer all the questions from the explorations, but instead synthesize those answers into the responses to the six step process outlined in the book (as well as Stat 131/132). Where appropriate, load the external datasets into this R template and use R commands to perform the required analysis. Recall the following resources for R:
+
+* [This PDF file](https://prof.mkjanssen.org/asme/RcmdsFromClass.pdf) from Calvin University
+* [The appendix to our course notes](https://prof.mkjanssen.org/asme/notes/appendix-1.html)
+* [A basic guide to Markdown](https://www.markdownguide.org/basic-syntax/)
+
+
+# Exploration X.Y
+
+## Step 1: Ask a research question
+
+
+## Step 2: Design a study and collect data
+
+
+```{r}
+
+```
+
+
+## Step 3: Explore the data
+
+
+## Step 4: Draw inferences beyond the data
+
+
+## Step 5: Formulate conclusions
+
+
+## Step 6: Look back and ahead
+
+
+

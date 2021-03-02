@@ -1,0 +1,6 @@
+Variety	Control	Air	ModifiedAir
+Allstar	6.9	6.7	9.5
+Bounty	4.3	4	5
+Kent	5.8	6.3	7.3
+Selva	8.2	7.9	11.5
+Vesper	3.4	3.2	4.2

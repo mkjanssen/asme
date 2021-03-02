@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <docinfo>
+<macros>
+{\labelitemi}{$\diamond$}
+\def\arraystretch{1.5}
+\newcommand{\contentsfinish}{}
+\newcommand{\separator}{\begin{center}\rule{\columnwidth}{\arrayrulewidth}\end{center}}
+\newcommand{\tosay}[1]{\begin{center}\text{\fbox{\scriptsize{#1}}}\end{center}}
+\renewcommand{\cftsecfont}{}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\smallcaps{#1}}
+\def\oldequation{\equation}
+\def\endoldequation{\endequation}
+\newcommand{\nl}{
+}
+\newcommand{\runin}[1]{\textls[50]{\otherscshape #1}}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\thesection}.\ \smallcaps{#1}}{\thesection.\ \smallcaps{#1}}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\sectionmark}[1]{\markboth{{\scriptsize\thesection}.\ \smallcaps{#1}}{}}
+\renewcommand{\subsectionmark}[1]{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\headrulewidth}{0.5pt}
+\newcommand{\makedefaultsection}[2][true]{
+}
+\newcommand{\timestamp}{{\color{red}Last updated: {\currenttime\ (UTC), \today}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\ideal}[1]{\left\langle\, #1 \,\right\rangle}
+\newcommand{\subgp}[1]{\left\langle\, #1 \,\right\rangle}
+\def\p{\varphi}
+\def\isomorphic{\cong}
+\def\Gal{\text{Gal}}
+\def\im{\text{im}}
+\def\normal{\vartriangleleft}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\def\lcm{{\text{lcm}\,}}
+\newcommand{\q}[1]{{\color{red} {#1}}}
+\newcommand{\startimportant}[1]{\end{[{Hint:} #1]\end}}
+\renewcommand{\textcircled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt,color=red] (char) {#1};}}
+\newcommand{\crossout}[1]{\tikz[baseline=(char.base)]{\node[mynode, cross out,draw] (char) {#1};}}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\setof}[2]{{\left\{#1\,\colon\,#2\right\}}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\bF{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\R{{\mathbb R}}
+\newcommand{\h}[1]{{\textbf{#1}}}
+\def\presnotes{}
+</macros>
+<latex-image-preamble>
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+</latex-image-preamble>
+<!-- <search>
+            <google>
+                <cx>017464805646507420634:civa1brpuu6</cx>
+            </google>
+        </search> -->
+<!-- <rename element="principle">Discussion</rename>
+<rename element="heuristic">Cube Move</rename> -->
+<rename element="insight">Screencast</rename>
+<rename element="convention"><c>R</c> Resource</rename>
+  </docinfo>
+  <book>
+    <title>Applied Statistical Models/Econometrics</title>
+
+    
+    	
+    <frontmatter>
+		<titlepage>
+	  
+			  <author>
+					<personname>Dr. Michael K. Janssen</personname>
+					<department>Mathematics and Statistics Department</department>
+					<institution>Dordt University</institution>
+					<email>mike.janssen@dordt.edu</email>
+				</author>
+		
+		
+	  
+			  </titlepage>
+
+		<preface xml:id="Sec-Introduction">
+		  <title>Introduction</title>
+		  <p>
+			
+		  </p>
+  
+		  
+		</preface>
+    
+    </frontmatter>
+    
+    <chapter xml:id="Week-01">
+      <title>Week 1: March 11</title>
+      
+    <section xml:id="Mar-11">
+      <title>March 11: Course Intro (Chapter P)</title>
+      
+                <introduction>
+
+<assemblage>
+  <title>Motivating Questions</title>
+  <p>
+  <statement>
+	Here are some questions we'll consider.
+	<ol>
+	  <li>What is this course about?</li>
+	  <li>What work will we do?</li>
+	  <li>What preliminary information should we know?</li>
+	</ol>
+  </statement>
+  </p>
+  
+</assemblage>
+
+
+  
+  
+ 
+</introduction>
+
+<subsection>
+	<title>What is this course about?</title>
+	
+	<p>
+		The  main problem of Stat 201 is to describe and quantify <em>variation</em>.
+		Specifically, how much variation in a response variable can be explained by explanatory variables?
+	</p>
+
+	<p>
+		In order to begin to answer this question, we begin by surveying multivariable thinking. What possible variables could affect a response?
+		We'll then develop methods for quantifying variation in the response and see how much of that variation is explained by our explanatory variables.
+		Study design and statistical interactions will be considered as well, before spending a bit of time considering (possibly multiple) quantitative explanatory variables, as well as a categorical response variable.
+	</p>
+	
+	<p>
+		<em>Throughout the course</em>, we will assume a solid foundation from Stat 131/132.
+	</p>
+
+
+
+</subsection>
+
+
+
+<subsection>
+	<title>What work will we do?</title>
+	
+	<p>
+		There is a heavy workload associated with Stat 201 (all the more if you're in Stat 202).
+		Each day we'll work through 1-2 explorations in class, with the expectation that you'll come to class having read the accompanying examples.
+		Weekly homework will be submitted on WileyPLUS, and one exploration per week will be submitted as an Rmarkdown file to facilitate our learning of the statistical programming language, R.
+		Additionally, Stat 201 students will design and complete a project using multiple explanatory variables, while Stat 202 students will complete a second project using time series methods.
+		There will be two exams (midterm and final) as well as a Christian perspective assignment.
+	</p>
+
+	
+</subsection>
+
+
+
+
+
+<subsection>
+  <title>Preliminaries</title>
+  
+  <p>
+	Today's material comes from p. 1-9 and 15-21 (Examples P.A and P.B) of the book. You are expected to read it before coming to class.
+	Material from Example P.A was covered in the intro stats course and we will assume knowledge of it in this course.
+  </p>
+  
+  <subsubsection>
+  	<title>Sources of Variation</title>
+	
+	<definition xml:id="def-sources-of-variation-diagram">
+		<idx>sources of variation diagram</idx>
+		<statement>
+			<p>
+				A <term>sources of variation diagram</term>  is a visual representation of our belief about possible sources which explain variation in the response variable.
+				This diagram typically lists <em>inclusion criteria</em> (criteria that determined which units would be included in the study/experiment) as well as sources of <term>explained variation</term> (the explanatory variables) and any <term>sources of unexplained variation</term>, which could include variables affecting the response that are not intended to be a part of the analysis and resulting model.
+			</p>
+		</statement>
+	</definition>
+	
+	<p>
+		As alluded to above, one of our goals is to use our data and techniques to develop a <term>statistical model</term> which would help us predict the outcome of a response variable based on the explanatory variable(s) of interest, as well as describe the observed variation.
+		Our primary measure of the accuracy of a model comes from <em>residuals</em>.
+	</p>
+	
+	<definition xml:id="def-residual">
+		<idx>residual</idx>
+		<statement>
+			<p>
+				A <term>residual</term> is the difference between the response variable outcome and a predicted value of the response variable outcome:
+				<me>
+					y_i - \hat{y}_i,
+				</me>
+				where <m>i</m> refers to the observational number, <m>i=1,\ldots,n</m>.
+			</p>
+		</statement>
+	</definition>
+	
+	<assemblage>
+		<p>
+			<statement>
+				The standard deviation of the residuals can be used to measure a typical prediction error from a statistical model.
+				It represents the amount of <q>unexplained</q> variation in the response variable.
+			</statement>
+		</p>
+	</assemblage>
+
+	<p>
+		We can also calculate the <term>standard error</term> of the residuals to measure how much of the observed variation our model explains; we'll usually use software to do that, and figure out how to calculate it by hand in Chapter 1.
+	</p>
+	
+	<exploration>
+		<statement>
+			<p>
+				We'll now work on Exploration P.B. Recall that links to the applets and datasets can be found at <url href="http://isi-stats.com/isi2/">the textbook website</url>.
+			</p>
+		</statement>
+		<solution>
+			<url href="expl-solutions/Preliminaries_Exp_2.pdf">Solutions here</url>.
+		</solution>
+
+	</exploration>
+
+
+
+
+  	
+  </subsubsection>
+
+  
+  
+  
+  
+  
+  
+  
+</subsection>
+
+<subsection>
+  <title>Today's Screencast</title>
+  
+  
+  <insight>
+  
+  </insight>
+  
+</subsection>
+
+
+<subsection>
+  <title>If you missed class today</title>
+  
+  <ol>
+	<li>Work through today's outline and read the marked pages in the book.</li>
+	<li>Watch the screencast above.</li>
+	<li>Submit any homework/assignments due today (check our <url href="https://dordt.instructure.com/courses/3110096">Canvas course</url> or the <url href="https://prof.mkjanssen.org/asme/index.html#schedule">syllabus schedule</url> to see what's due).</li>
+	<li><url href="mailto:mike.janssen@dordt.edu">Send Dr. Janssen an email</url> or <url href="https://calendly.com/mkjanssen/student-hours">set up a student hours appointment</url> if you have any questions!</li>
+  </ol>
+  
+</subsection>
+    
+    </section>
+    
+    
+      
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-02">
+      <title>Week 2: March 15-21</title>
+      
+      
+      <section xml:id="Mar-16">
+        <title>March 16: Identifying and Quantifying Sources of Variation (Sections 1.1-1.2)</title>
+        
+        <introduction>
+          
+          <assemblage>
+            <title>Preparing for Class</title>
+            <p>
+            <statement>
+              To prepare for today's class, read Examples 1.1 (pp. 33-40) and 1.2 (pp. 44-50).           
+            </statement>
+            </p>
+            
+            </assemblage>
+          
+          
+          <assemblage>
+          <title>Today's Plan</title>
+          <p>
+          <statement>
+          Today in class, we will:
+          <ol>
+            <li>Identify sources of variation in experiments.</li>
+            <li>Discuss a way of quantifying sources of variation and partitioning error.</li>
+            <li>Review the notion of statistical significance in context.</li>
+            
+          </ol>
+          
+          </statement>
+          </p>
+          
+          </assemblage>
+          
+          
+          </introduction>
+          
+          <subsection>
+            <title>Today's Notes</title>
+            
+          
+          
+          <assemblage>
+          <title>Summary</title>
+          <p>
+          <statement>
+          
+            <p>
+              Experiments differ from observational studies in that the researchers are deliberately manipulating some values of the explanatory variable(s). Random assignment can allow cause-and-effect conclusions, while inclusion criteria give information about possible generalizations of the findings (as opposed to just requiring a random sample).
+            </p>
+            
+            <p>
+              In addition to identifying sources of variation in a study, we want to quantify that variation. At this point, the standard error of the residuals gives us a way to start to quantify that variation. When we begin to consider two-mean models, we see the total error SSTotal partitioned as the sum of the model error SSModel (sum of squares for the model) and the Sum of the Squared Errors, the sum of the squares of the residuals.
+            </p>
+            
+            <!-- 
+<p>
+              In addition to the notion of practical significance, we want to determine if an observed statistic is <em>statistically significant</em>. This involves identifying a statistic of interest, null/alternative hypotheses, and asking: is the observed statistical likely to occur by chance alone?
+            </p>
+ -->
+          </statement>
+          </p>
+          
+          </assemblage>
+          
+          <subsubsection>
+          	<title>Identifying Sources of Variation (Section 1.1)</title>
+          	
+          	<p>
+          		One source of variation is the design of the study itself.
+          	</p>
+
+          	
+          	<definition xml:id="def-study-protocol">
+          		<idx><h>study</h><h>protocol</h></idx>
+          		<idx><h>study</h><h>plan</h></idx>
+          		<statement>
+          			<p>
+          				The <term>study protocol</term> outlines how the study will be conducted, providing enough detail so that someone else could carry out the same study under identical conditions.
+          			</p>
+          		</statement>          	
+          	</definition>
+          	
+          	<p>
+          		In order to reduce variation, it is often desirable to hide the purpose of the study from the participants and the treatment a given participant receives from the researchers.
+          	</p>
+
+			<definition xml:id="def-double-single-blind">
+				<idx><h>study</h><h>double-blind</h></idx>
+				<idx><h>study</h><h>single-blind</h></idx>
+				<statement>
+					<p>
+						A study is <term>double-blind</term> if
+					</p>
+					<ul>
+						<li>the subjects do not know what treatment condition they are in, and</li>
+						<li>the person evaluating the response variable does not know what treatment condition the subject is in.</li>
+						</ul>
+					
+					<p>
+						If only one of the above criteria is true for a study, then the study is <term>single-blind</term>.
+					</p>
+				</statement>
+			</definition>
+
+			<p>
+				Part of the study design also includes defining clear characteristics which determine who is in the study and who is not.
+			</p>
+			
+			<definition xml:id="def-inclusion-criteria">
+				<idx>inclusion criteria</idx>
+				<idx><h>study</h><h>inclusion criteria</h></idx>
+				<statement>
+					<p>
+						<term>Inclusion criteria</term> are the set of characteristics that individuals must have in order to participate in the study.
+					</p>
+				</statement>
+			</definition>
+			
+			<p>
+				After we gather our data and compute our statistic, we can determine how far from the observed statistic each data point is. This is the <xref ref="def-residual" text="custom">residual</xref>.
+			</p>
+
+			<definition xml:id="def-standard-error-of-residuals">
+				<idx>standard error of residuals</idx>
+				<idx><h>residual</h><h>standard error of</h></idx>
+				<statement>
+					<p>
+						The <term>standard error of residuals</term> measures variability in the residuals after applying a model.
+					</p>
+				</statement>
+			</definition>
+			
+			<p>
+				The variation researchers hope to understand is captured by the treatments.
+			</p>
+			
+			<definition xml:id="def-treatments">
+				<idx>treatment variable</idx>
+				<idx>factor</idx>
+				<idx>level</idx>
+				<idx>explanatory variable</idx>
+				<idx>response variable</idx>
+				<idx>experimental units</idx>
+				<idx>treatment</idx>
+				<statement>
+					<p>
+						The <term>treatment variable</term> or <term>factor</term> is another name for the <term>explanatory variable</term> in an experiment.
+The levels of the factor are often referred to as <term>treatments</term>.
+The <term>response variable</term> is the outcome measured on each experimental unit after the treatment has been applied.
+In experiments, the observational units are often referred to as <term>experimental units</term>.
+					</p>
+				</statement>
+			</definition>
+			
+			<p>
+				We can build a model to predict a response in multiple ways.
+				One is to make a prediction based on the mean of the entire dataset, quantifying the variation with the standard error of the residuals. This is known as <term>single mean model</term>.
+
+			</p>
+			<p>
+				Another possibility is to use a <term>multiple mean model</term>, where the mean of each treatment group predicts the response (with the variation described by the standard errors of the residuals in <em>each treatment group</em>).
+			</p>
+
+
+
+
+          	
+          	
+          	</subsubsection>
+          	
+          	<subsubsection>
+          		<title>Quantifying Sources of Variation (Section 1.2)</title>
+          		
+          		<p>
+          			Once we have identified sources of variation, we want to understand how that variation (especially the <em>explained</em> variation) can be quantified.
+          			We will primarily quantify variation via the standard deviation and standard error, calculations that rely on the <em>SSTotal</em> and <em>degrees of freedom (df)</em>.
+          		</p>
+				
+				<definition xml:id="def-sstotal">
+					<idx>SSTotal</idx>
+					<statement>
+						<p>
+							The <term>Sum of Squares Total</term>, or <term>SSTotal</term> is the number
+						</p>
+
+						<me>
+							SSTotal = \sum\limits_{\text{all obs}} (\text{observed value} - \text{overall mean})^2
+						</me>
+					</statement>
+				</definition>
+				
+				<definition>
+					<idx>degrees of freedom (df)</idx>
+					<statement>
+						<p>
+							The <term>degrees of freedom (df)</term> for a sum of squares calculation represents the number of <q>independent</q> values in the sum.
+						</p>
+					</statement>
+				</definition>
+				
+				<definition xml:id="def-sserror">
+					<idx>SSErrors</idx>
+					<idx>Sum of Squared Errors</idx>
+					<statement>
+						<p>
+							The <term>sum of squared errors (SSError)</term> for a model is the sum of the squared prediction errors (<xref ref="def-residual" text="custom">residuals</xref>) for the particular statistical model:
+						</p>
+						<me>
+							SSError = \sum\limits_{\text{all obs}} (\text{observed value} - \text{predicted value})^2 = \sum\limits_{\text{all obs}} (\text{residuals})^2
+						</me>
+					</statement>
+				</definition>
+				
+				<p>
+					When we apply different treatments to different groups, we are naturally interested in the observed effect of the treatment.
+				</p>
+				
+				<definition xml:id="def-effect">
+					<idx>effect</idx>
+					<statement>
+						<p>
+							The <term>effect</term> of a group or treatment is the difference between the mean response <em>in the group</em> and the overall mean response.
+						</p>
+					</statement>
+				</definition>
+				
+				<p>
+					Then, the larger the effects, the larger the differences.
+				</p>
+				
+				<definition xml:id="def-ssmodel">
+					<idx>Sum of Squares for the Model</idx>
+					<idx>SSModel</idx>
+					<statement>
+						<p>
+							The <term>Sum of Squares for the Model (SSModel)</term> measures the variation in the group means from the overall mean.
+						</p>
+						<me>
+							SSModel = \sum\limits_{\text{all obs}} (\text{group mean} - \text{overall mean})^2 = \sum\limits_{\text{all groups}} (\text{group size})\times (\text{effect})^2.
+						</me>
+					</statement>
+				</definition>
+				
+				
+				<assemblage>
+					<title>Partitioning SSTotal</title>
+					<p>
+						<statement>
+							The variation in the response (SSTotal) can be partitioned as the sum of the variability of interest (SSModel) and the unexplained variation (SSError):
+							<me>
+								SSTotal = SSModel + SSError
+							</me>
+							Moreover, the degrees of freedom are also partitioned:
+							<me>
+								\text{df total} = \text{df model} + \text{df error}
+							</me>
+						</statement>
+					</p>
+				</assemblage>
+				
+				<p>
+					We are often concerned with how much variation is described by our model.
+				</p>
+
+				<definition>
+					<idx><m>R^2</m></idx>
+					<idx>coefficient of determination</idx>
+					<statement>
+						<p>
+							The <term>coefficient of determination</term>, <m>R^2</m>, is the proportion of the variation explained by our model:
+						</p>
+						<me>
+							R^2 = \frac{SSModel}{SSTotal} = 1 - \frac{SSError}{SSTotal}
+						</me>
+					</statement>
+				</definition>
+
+
+
+
+          		
+          	</subsubsection>
+          	
+          	<subsubsection>
+          		<title>Explorations</title>
+          		
+          		
+          		<exploration>
+	<statement>
+		<p>
+			Now, we'll work on Explorations 1.1 and 1.2.
+		</p>
+	</statement>
+	<solution>
+		<p>
+			<url href="expl-solutions/Chapter_1_Exp_1.pdf">Solutions to Exploration 1.1 here</url>.
+			<url href="expl-solutions/Chapter_1_Exp_2.pdf">Solutions to Exploration 1.2 here</url>.
+		</p>
+	</solution>
+</exploration>
+	
+          		
+          	</subsubsection>
+
+
+
+            
+          </subsection>
+          
+          <subsection>
+          <title>Today's screencast</title>
+          
+          <insight>
+            
+          </insight>
+          
+          </subsection>
+          
+          <subsection>
+          <title>If you missed class today</title>
+          
+          
+          
+          <ol>
+          <li>Watch the screencast above.</li>
+          <li>Complete the prep and all in-class activities.</li>
+          <li>Complete any assigned homework.</li>
+          </ol>
+          
+          </subsection>
+          
+          
+          
+        
+        
+        
+      
+      </section>
+      
+      <section xml:id="Mar-18">
+        <title>March 18</title>
+      
+      </section>
+      
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-03">
+      <title>Week 3: March 22-28</title>
+      
+      <section xml:id="Mar-23">
+        <title>March 23</title>
+      
+      </section>
+      
+      
+      <section xml:id="Mar-25">
+        <title>March 25</title>
+      
+      </section>
+      
+      <section xml:id="Stat202-Week03">
+      	<title>Stat 202: March 22-28</title>
+      
+      
+      </section>
+
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-04">
+      <title>Week 4: March 29-April 4</title>
+      
+      
+      <section xml:id="Mar-30">
+        <title>March 30</title>
+      
+      </section>
+      
+      
+      <section xml:id="Apr-01">
+        <title>April 1</title>
+      
+      </section>
+      
+      <section xml:id="Stat202-Week04">
+      	<title>Stat 202: March 29-April 4</title>
+      
+      
+      </section>
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-05">
+      <title>Week 5: April 5-11</title>
+      
+      
+      <section xml:id="Apr-06">
+        <title>April 6</title>
+      
+      </section>
+      
+      <section xml:id="Apr-08">
+        <title>April 8</title>
+      
+      </section>
+      
+      <section xml:id="Stat202-Week05">
+      	<title>Stat 202: April 5-11</title>
+      
+      
+      </section>
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-06">
+      <title>Week 6: April 12-18</title>
+      
+      
+      <section xml:id="Apr-13">
+        <title>April 13</title>
+      
+      </section>
+      
+      
+      <section xml:id="Apr-15">
+        <title>April 15</title>
+      
+      </section>
+      
+      <section xml:id="Stat202-Week06">
+      	<title>Stat 202: April 12-18</title>
+      
+      
+      </section>
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-07">
+      <title>Week 7: April 19-25</title>
+      
+      <section xml:id="Apr-20">
+        <title>April 20</title>
+      
+      </section>
+      
+      <section xml:id="Apr-22">
+        <title>April 22</title>
+      
+      </section>
+      
+      <section xml:id="Stat202-Week07">
+      	<title>Stat 202: April 19-25</title>
+      
+      
+      </section>
+    
+    </chapter>
+    
+    
+    <chapter xml:id="Week-08">
+      <title>Week 8: April 26-May 2</title>
+      
+      <section xml:id="Apr-27">
+        <title>April 27</title>
+      
+      </section>
+      
+      
+      <section xml:id="Apr-29">
+        <title>April 29</title>
+      
+      </section>
+    
+    </chapter>
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    <!--<xi:include href="./Truth.ptx" />
+    <xi:include href="./Justice.ptx" />   --> 
+     <backmatter>
+      <index>
+        <title>Index</title>
+        <index-list />
+      </index>
+      <appendix xml:id="appendix-using-r-201">
+      	<title>Using R in Stat 201</title>
+      	
+      		<introduction>
+      		<p>
+      			The intent of this index is to be a resource for using <c>R</c>, the statistical package we're employing this semester.
+      			This will hopefully consist of important commands, examples, and links to more information.
+      			It will be a work in progress the entire semester, and even commands and functions (like <xref ref="r-lm" text="custom"><c>lm()</c></xref>) which appear from Day 1 may undergo revision and elaboration as we discover new uses for it.
+      		</p>
+      		<p>
+      			This of course in no way replaces the <url href="https://www.rdocumentation.org/">RDocumentation project</url>, which should be considered the final world on all things <c>R</c>.
+      			Instead it will be our own idiosyncratic little reference guide.
+      			Please suggest additions as you encounter the need for them<mdash />bonus points for sending syntax and an example.
+      		</p>
+
+      		</introduction>
+
+			
+			
+			<section>
+				<title>Loading Datasets and Referring to Variables</title>
+				
+				
+				<convention xml:id="r-readdelim">
+				
+				<idx><h>R resources</h><h>read.delim()</h></idx>
+				<title>read.delim()</title>
+
+					
+					<statement>
+						The <url href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table"><c>read.delim()</c></url> function reads a delimited text file from a URL. The default delimiter is the <c>TAB</c> character.
+						<sage language="r">
+							<input>
+								read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+							</input>
+						</sage>
+
+					</statement>
+					</convention>
+
+				
+				
+				<convention xml:id="r-variable-reference">
+					<idx><h>R resources</h><h>referring to a variable</h></idx>
+				<title>Referring to a variable</title>
+						<statement>
+							To refer to a variable in a dataset, use a dollar sign.
+							<sage language="r">
+							<input>
+								homeprices=read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+								homeprices$price.1000
+								hist(homeprices$price.1000)
+							</input>
+						</sage>
+					</statement>
+				</convention>
+
+
+
+
+			</section>
+			
+			
+			<section>
+				<title>Visualizing Data</title>
+				
+				<convention xml:id="r-hist">
+				
+				<idx><h>R resources</h><h>hist()</h></idx>
+				<title>hist()</title>
+					<statement>
+						The <url href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist"><c>hist()</c></url> function creates a histogram.
+						<sage language="r">
+							<input>
+								homeprices=read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+								hist(homeprices$price.1000)
+							</input>
+						</sage>
+					</statement>
+				</convention>
+
+				
+	
+				
+			</section>
+
+
+			<section>
+				<title>Computing Statistics and Models</title>
+				
+				<convention xml:id="r-lm">
+					<idx><h>R resources</h><h>lm()</h></idx>
+					<title>lm()</title>
+					<statement>
+							One of the most important functions we'll use is a linear model, <url href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm"><c>lm()</c></url>.
+							It is typically given in the form <c>lm(response ~ expl1 + expl2 + expl3)</c>, where the response and explanatory variables can be found in a given dataset.
+							A <c>summary()</c> is often given following the use of <c>lm()</c>.
+							
+							<sage language="r">
+							<input>
+								homeprices=read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+								model2 = lm(homeprices$price.1000~homeprices$sqft)
+								summary(model2)
+							</input>
+						</sage>
+						</statement>
+				</convention>
+				
+				
+				
+				<convention xml:id="r-aov">
+					<idx><h>R resources</h><h>aov()</h></idx>
+					<title>aov()</title>
+					<statement>
+						The <url href="https://www.rdocumentation.org/packages/stats/versions/3.3/topics/aov"><c>aov()</c></url> fits an analysis of variance model (AOV) to a linear model. Generally used in conjunction with <xref ref="r-lm" text="custom"><c>lm()</c></xref>.
+							
+							A <c>summary()</c> is often given following the use of <c>lm()</c>.
+							
+							<sage language="r">
+							<input>
+								homeprices=read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+								model2 = lm(homeprices$price.1000~homeprices$sqft)
+								aov(model2)
+							</input>
+						</sage>
+						</statement>
+				</convention>
+				
+				
+				<convention xml:id="r-anova">
+					<idx><h>R resources</h><h>anova()</h></idx>
+					<title>anova()</title>
+					<statement>
+						The <url href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/anova"><c>anova()</c></url> command computes analysis of variance tables for the given model.
+							
+							A <c>summary()</c> is often given following the use of <c>lm()</c>.
+							
+							<sage language="r">
+							<input>
+								homeprices=read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+								model2 = lm(homeprices$price.1000~homeprices$sqft)
+								anova(model2)
+							</input>
+						</sage>
+						</statement>
+				</convention>
+
+
+				
+				
+			</section>
+
+
+			
+			
+
+			
+
+					
+
+
+
+
+      </appendix>
+      
+      <appendix>
+      	<title>Using R in Stat 202</title>
+      	
+      	<introduction>
+      		<p>
+      			As with <xref ref="appendix-using-r-201" />, this appendix will aim to be a resource for doing time series in <c>R</c>. An extremely useful resource is <url href="https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html">Using <c>R</c> for Time Series Analysis</url> by Avril Coghlan.
+      		</p>
+      	</introduction>
+
+      	
+      	
+      	
+      </appendix>
+
+
+    </backmatter>
+	
+  </book>
+</pretext>

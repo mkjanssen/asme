@@ -1,0 +1,46 @@
+---
+title: "ISI2 Exploration 1.4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+options(repos=c(CRAN="https://ftp.osuosl.org/pub/cran/"))
+install.packages("lattice")
+```
+
+## Load in the data file, e.g.,
+```{r}
+Squirrels <- read.table("http://www.isi-stats.com/isi2/data/Squirrels.txt", sep="\t", header=T, stringsAsFactors = T)
+head(Squirrels)
+```
+
+##Distribution of time
+
+```{r}
+hist(Squirrels$Length)
+isisummary(Squirrels$Length)
+#SStotal
+var(Squirrels$Length)*17
+```
+
+
+##Subset by location
+```{r}
+library(lattice)
+histogram(~Squirrels$Length | Squirrels$Location)
+isisummary(Squirrels$Length, Squirrels$Location)
+```
+**8) Give the standard error of the residuals**
+```{r}
+summary(lm(Squirrels$Length~Squirrels$Location))$sigma
+```
+
+**9) $R^2$ components**
+```{r}
+aov(Squirrels$Length~Squirrels$Location)
+```
+##ANOVA table
+```{r}
+anova(lm(Squirrels$Length~Squirrels$Location))

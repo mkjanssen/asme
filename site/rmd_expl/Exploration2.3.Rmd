@@ -1,0 +1,76 @@
+---
+title: "Exploration 2.3"
+output: word_document
+---
+  
+  
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+#knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+```
+```{r, echo=FALSE}
+par(mar=c(4.1, 4.1, 1.1, 1.1)) 
+```
+
+**Load the carmpg dataset, e.g.,**
+```{r}
+carmpg= read.delim("http://www.isi-stats.com/isi2/data/carmpg.txt", stringsAsFactors=T)
+head(carmpg)
+```
+
+
+**Acceleration vs. weight**
+```{r}
+with(carmpg, plot(acceleration ~ weight))
+with(carmpg, summary(lm(acceleration ~ weight))$r.squared)
+```
+
+**ANOVA table**
+```{r}
+with(carmpg, summary(aov(acceleration ~ weight)))
+```
+
+**Acceleration vs. Horsepower**
+```{r}
+with(carmpg, plot(acceleration ~ horsepower))
+with(carmpg, summary(lm(acceleration ~ horsepower))$r.squared)
+with(carmpg, summary(aov(acceleration ~ horsepower)))
+```
+
+
+**Acceleration vs. Weight equation, with effect coding**
+```{r}
+with(carmpg, summary(lm(acceleration ~ weight, contrasts = list(weight="contr.sum"))))
+```
+**adjusting for horsepower**
+```{r}
+##Create -1/1 version of weight
+weightEffect = 2*as.numeric(carmpg$weight)-3
+with(carmpg, plot(acceleration ~ weightEffect, col = horsepower))
+#see also
+boxplot(acceleration ~ horsepower:weight, data = carmpg, col=c("blue", "red"), varwidth=T)
+```
+
+**Adjusting for horsepower**
+```{r}
+horsepowerEffect = 2*as.numeric(carmpg$horsepower)-3
+model1=lm(acceleration ~ horsepowerEffect + weightEffect, data = carmpg)
+summary(model1)
+acceleration.adj=carmpg$acceleration - 1.87147*(2*as.numeric(carmpg$horsepower)-3)
+plot(acceleration.adj ~ carmpg$weight)
+isisummary(acceleration.adj, carmpg$weight)
+model2 = lm(acceleration.adj ~ weightEffect)
+summary(model2)
+#see also
+coplot(acceleration ~ weight | horsepower, data = carmpg, panel = panel.smooth)
+```
+
+**ANOVA**
+```{r}
+anova(model1)
+#to get adjusted sums of squares (p-values match the t-tests)
+##first install the car package
+car::Anova(model1, type = "III")
+summary(model1)
+```

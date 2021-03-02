@@ -1,0 +1,78 @@
+---
+title: "Expl2.2"
+output: html_document
+---
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+```
+```{r, echo=FALSE}
+par(mar=c(4.1, 4.1, 1.1, 1.1)) 
+```
+
+**Load the strawberry dataset, e.g.,**
+```{r}
+firmness= read.delim("http://www.isi-stats.com/isi2/data/StrawberryStorageRCBD.txt")
+head(firmness)
+```
+
+
+
+```{r, results = "hide"}
+Overall =  mean(firmness$Firmness)
+SSTotal = var(firmness$Firmness)*(length(firmness$Firmness) - 1)
+ControlMean = mean(firmness$Firmness[firmness$Storage=="Control"])
+ModifiedAirMean = mean(firmness$Firmness[firmness$Storage=="ModifiedAir"])
+AirMean = mean(firmness$Firmness[firmness$Storage=="Air"])
+```
+
+
+Overall mean firmness `r Overall`
+
+SSTotal `r SSTotal`
+
+Control Mean `r ControlMean`
+
+Modified Air Mean `r ModifiedAirMean`
+
+Air Mean `r AirMean`
+
+We can continue this as was done in the Section 2.1 rmd file. But let's try generating a blocked anova table.
+
+
+```{r}
+unstacked= read.delim("https://prof.mkjanssen.org/asm/data/expl2_2_unstacked.txt")
+head(unstacked)
+
+varietymeans = (unstacked$Control+unstacked$ModifiedAir+unstacked$Air)/3
+varietyeffects=varietymeans-Overall
+3*sum(varietyeffects^2) # 3 because there are three observations in each block
+
+```
+
+
+
+ANOVA table
+```{r}
+anova(lm(firmness$Firmness ~ firmness$Storage + as.factor(firmness$Variety)))
+```
+
+Prediction equation
+```{r}
+summary(lm(firmness$Firmness ~ firmness$Storage + as.factor(firmness$Variety)))
+```

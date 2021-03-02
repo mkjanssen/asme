@@ -1,0 +1,124 @@
+---
+title: "Exploration 4.1"
+output: word_document
+---
+
+**Researchers wanted, to know whether the cytosine genetic variation in FADS1 is associated with the metabolism of fatty acids in the blood as measured by the arachidonic acid to di-homo-gamma-linolenic fatty acid ratio. Lower values of this ratio indicate higher amounts of fatty acids in the blood and thus, more efficient use of dietary fatty acids.**
+  
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+```
+```{r, echo=FALSE}
+par(mar=c(4.1, 4.1, 1.1, 1.1)) 
+```
+
+```{r}
+###Load the fattyAcid dataset, e.g.
+fattyAcid= read.delim("http://www.isi-stats.com/isi2/data/fattyAcid.txt")
+head(fattyAcid)
+```
+
+
+```{r}
+###Produce histogram
+hist(fattyAcid$FattyAcidRatio)
+#or
+#install.packages("lattice")
+library("lattice")
+histogram(fattyAcid$FattyAcidRatio)
+```
+
+
+```{r}
+#Numerical summaries
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+isisummary(fattyAcid$FattyAcidRatio)
+```
+
+**1) Describe the shape, center, and variability of the distribution of the fatty acid ratio in the blood of these 100 study participants.**
+
+
+```{r}
+#Subset by Cystosine
+histogram(~fattyAcid$FattyAcidRatio | fattyAcid$Cytosine, layout=c(1,3))
+isisummary(fattyAcid$FattyAcidRatio,fattyAcid$Cytosine)
+boxplot(fattyAcid$FattyAcidRatio ~ fattyAcid$Cytosine, ylab="Fatty Acid Ratio", xlab = "Cytosine")
+```
+
+**2) Does there appear to be an association between the fatty acid ratio and the genetic variant? Describe the nature of this association. Does it appear to be better to inherit the cytosine variant from both parents, either (one) parent, or neither parent to yield lower (better) ratios? (What would the scatterplot look like if the number of parents was not related to the fatty acid ratios? What if it explained all of the variation in fatty acid ratios?) Explain.**
+
+
+```{r}
+#ANOVA
+with(fattyAcid, summary(aov(FattyAcidRatio ~ Cytosine)))
+```
+
+**3) What proportion of the variation in the fatty acid ratio is explained by the cytosine variable? What is the SSModel value? Is the association between the fatty acid ratio and the genetic variant statistically significant (cite both the p-value and the F-statistic)?**
+
+```{r}
+#residual SE
+with(fattyAcid, (aov(FattyAcidRatio ~ Cytosine)))
+```
+
+**4)Write out the prediction equation for the separate-means model. What is the value of the residual SE? What is the value of the SSError?**
+
+**5) What does this model predict for the fatty acid ratio when cytosine is inherited from neither parent, 1 parent, or both parents?**
+
+**6)What do you notice about the difference in the predicted ratio as you move from 0 to 1 to 2 parents? How big is the change from 0 to 1 as compared to the change from 1 to 2?**
+
+```{r}
+#scatterplot with Copies
+plot(fattyAcid$FattyAcidRatio~ fattyAcid$Copies)
+```
+
+**7) Do you see a general trend between the fatty acid ratio and the number of copies? Increasing or decreasing? Would it be reasonable to call it a linear trend?**
+
+```{r}
+#Fit regression line
+with(fattyAcid, lm(fattyAcid$FattyAcidRatio ~ fattyAcid$Copies))
+
+#Add regression line to scatterplot
+plot(fattyAcid$FattyAcidRatio~ fattyAcid$Copies)
+abline(with(fattyAcid, lm(FattyAcidRatio ~ Copies)))
+```
+
+**8) Record the equation using good statistical notation.**
+
+**9) Identify the y-intercept and the slope in the fatty acid regression model provided (include units).**
+
+**10) In the context of this study, write an interpretation for the <i>y</i>-intercept.**
+
+
+**11) In the context of this study, write an interpretation for the slope.**
+
+**12) Use the regression model to predict the fatty acid ratio when someone has 0, 1, and 2 copies of cytosine.What is the difference in the predicted values as you move from 0 to 1 and 1 to 2 parents?**
+
+**13) How do the predictions made with the regression model compare to what you found earlier when we used the separate-means model? What are the implications of this?**
+
+**14) Determine the residual for the first person in the dataset. Remember: the residual is the observed response minus the predicted response. Interpret this residual in the context of this study.**
+
+```{r}
+#ANOVA table for linear model
+#install.packages("car")
+with(fattyAcid, car::Anova(lm(FattyAcidRatio ~ Copies)))
+```
+
+**15) Fill in the table with information from the ANOVA tables for both the separate means and linear models and the residual SE values for each model. (The residual SE for the regression model can obtained by checking the Regression SE box, by looking at the distribution of the model residuals, or by taking the square root of MSError.)**
+
+**16) Compare the SSError from the linear model to the SSError of the single-mean model you computed earlier. How close are they? How do the $R^2$ values for the two models compare?**
+
+**17) How does the residual Standard Error for the linear model compare to the separate means model?**
+
+**18) What are the implications of having similar residual Standard Error and explained variation in both models?**
+
+
+```{r}
+#Residual plots
+modelLM = with(fattyAcid, lm(FattyAcidRatio ~ Copies))
+plot(modelLM)
+histogram(modelLM$residuals)
+plot(modelLM$residuals ~ modelLM$fitted.values)
+```
+
+**19) Does this graph exhibit any sort of pattern? That is, do any of the "stacks" sit mostly above or below the horizontal line at a residual of 0, or does each stack of residuals appear to be mostly randomly scattered about the horizontal line at a residual of 0? Do the "widths" of the stacks seem approximately the same?**

@@ -1,0 +1,63 @@
+---
+title: "Exploration 3.4"
+output: word_document
+---
+  
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+```
+
+**Load the hopelessness dataset, e.g.,**
+```{r}
+hopelessness= read.delim("http://www.isi-stats.com/isi2/data/hopelessness8months_2group.txt", stringsAsFactors=T)
+head(hopelessness)
+```
+
+**3) Explore the data**
+```{r}
+with(hopelessness, plot(hopelessness8 ~ Exercise))
+```
+
+**3) Is there preliminary evidence of a relationship between Exercise Status and hopelessness level?**
+
+
+**Statistical model**
+```{r}
+#effects coding
+with(hopelessness, lm(hopelessness8 ~ Exercise, contrasts = list(Exercise="contr.sum")))
+```
+**4) What are the estimated effects for exercisers and non-exercisers?**
+
+
+##5) ANOVA table**
+```{r}
+with(hopelessness, summary(aov(hopelessness8~Exercise)))
+```
+**How much of the variation in hopelessness scores is explained by whether or not the
+individual exercises?**
+
+**6) Explain how baseline hopelessness levels (Not hopeless vs. Moderate to Severe Hopelessness) could act as a confounding variable on the relationship between exercise and eight-month hopelessness.**
+
+
+**two variable model**
+```{r}
+model1 = with(hopelessness, lm(hopelessness8~Exercise + BaselineGroup, contrasts = list(Exercise="contr.sum", BaselineGroup="contr.sum")))
+summary(model1)
+anova(model1)
+```
+**two variable model with interaction**
+```{r}
+model2 = with(hopelessness, lm(hopelessness8~Exercise*BaselineGroup, contrasts = list(Exercise="contr.sum", BaselineGroup="contr.sum")))
+summary(model2)
+anova(model2)
+```
+
+**Residuals**
+```{r}
+hist(model2$residuals)
+plot(model2$residuals~model2$fitted.values)
+plot(model2)
+```
